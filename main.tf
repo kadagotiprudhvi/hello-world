@@ -71,8 +71,8 @@ resource "aws_security_group" "prosg" {
 
   ingress {
     description = "http from all internet"
-    from_port = 80
-    to_port = 80
+    from_port = 3000
+    to_port = 3000
     protocol = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -107,7 +107,7 @@ resource "aws_instance" "first_instance" {
   user_data = <<-EOF
               #!/bin/bash
               sudo apt-get update
-              sudo apt-get install -y openjdk-11-jdk
+              sudo apt-get install -y npm
               EOF
     key_name = "terraformkey"
     associate_public_ip_address = true
